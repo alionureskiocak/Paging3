@@ -11,7 +11,7 @@ import com.example.paging3.domain.model.UserEntity
 interface UserDao {
 
     @Upsert
-    suspend fun insertUsers(users : List<User>)
+    suspend fun insertUsers(users : List<UserEntity>)
 
     @Query("SELECT * FROM userentity")
     fun pagingSource() : PagingSource<Int, UserEntity>
