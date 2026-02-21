@@ -19,3 +19,11 @@ fun UserDto.toEntity() : UserEntity{
         avatarUrl = avatar_url
     )
 }
+
+fun UserEntity.toDomain() : User{
+    return User(
+        id = id,
+        username = username,
+        avatarUrl = avatarUrl
+    )
+}
