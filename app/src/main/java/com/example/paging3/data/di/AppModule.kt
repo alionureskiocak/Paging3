@@ -6,6 +6,8 @@ import androidx.room.Room
 import com.example.paging3.data.local.UserDao
 import com.example.paging3.data.local.UserDatabase
 import com.example.paging3.data.remote.UserApi
+import com.example.paging3.data.repository.UserRepositoryImpl
+import com.example.paging3.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -45,5 +47,11 @@ object AppModule {
     @Provides
     fun provideUserDao(db : UserDatabase) : UserDao{
         return db.userDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideUserRepository(api : UserApi, db: UserDatabase) : UserRepository{
+        return UserRepositoryImpl(api,db)
     }
 }
